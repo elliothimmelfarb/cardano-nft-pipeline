@@ -2,11 +2,6 @@
   "name": "cardano-nft-pipeline",
   "version": "1.0.0",
   "description": "A pipeline for processing images and minting them as Cardano NFTs",
-  "main": "index.ts",
-  "scripts": {
-    "test": "test",
-    "start": "ts-node index.ts"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elliothimmelfarb/cardano-nft-pipeline.git"
