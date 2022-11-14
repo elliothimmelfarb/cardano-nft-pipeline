@@ -10,6 +10,7 @@ Uses [Deno.env](https://deno.land/manual@v1.28.0/basics/env_variables#built-in-d
 
 ```typescript
 Deno.env.set('BLOCKFROST_PROJECT_ID', '<your blockfrost project ID>')
+Deno.env.set('SEED_PHRASE', '<minting wallet seed phrase>')
 ```
 
 ### Run:

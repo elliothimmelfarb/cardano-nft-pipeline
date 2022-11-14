@@ -1,4 +1,8 @@
 import '../env.ts'
-import { cardano } from './cardano.ts'
+// import { createNewWallet } from './createNewWallet.ts'
+import { getWalletAddress } from './getWalletAddress.ts'
+import { getWalletUtxos } from './getWalletUtxos.ts'
 
-cardano()
+// createNewWallet()
+getWalletAddress()
+getWalletUtxos()
