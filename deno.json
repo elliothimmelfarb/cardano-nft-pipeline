@@ -1,5 +1,5 @@
 {
   "tasks": {
-    "run": "deno run --allow-net src/main.ts"
+    "run": "deno run --allow-net --allow-env src/main.ts"
   }
 }
