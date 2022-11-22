@@ -29,8 +29,6 @@ export const mintNFT = async (name: string) => {
 
   const policyId: PolicyId = lucid.utils.mintingPolicyToId(mintingPolicy)
 
-  const unit: Unit = policyId + utf8ToHex(name)
-
   const metadata = {
     [policyId]: {
       [name]: {
@@ -46,15 +44,33 @@ export const mintNFT = async (name: string) => {
         ],
         image: 'https://developers.cardano.org/img/cardano-white.svg',
       },
+      [name + '2']: {
+        name: name + '2',
+        description: 'An NFT minted by Lucid',
+        mediaType: 'image/svg',
+        files: [
+          {
+            mediaType: 'image/svg',
+            name: name + '2',
+            src: 'https://developers.cardano.org/img/cardano-white.svg',
+          },
+        ],
+        image: 'https://developers.cardano.org/img/cardano-white.svg',
+      },
     },
     version: '1.0',
   }
 
   console.log('metadata:', JSON.stringify(metadata))
 
+  // const unit: Unit = policyId + utf8ToHex(name)
+
   const tx = await lucid
     .newTx()
-    .mintAssets({ [unit]: 1n })
+    .mintAssets({
+      [policyId + utf8ToHex(name)]: 1n,
+      [policyId + utf8ToHex(name + 2)]: 1n,
+    })
     .attachMetadata(721, metadata)
     .validTo(Date.now() + 100000)
     .attachMintingPolicy(mintingPolicy)
