@@ -23,7 +23,7 @@ export const mintingPolicy = async () => {
   const policyId: PolicyId = lucid.utils.mintingPolicyToId(script)
 
   return {
-    script: script,
-    id: policyId,
+    policyScript: script,
+    policyId: policyId,
   }
 }
