@@ -28,3 +28,7 @@ Paste metadata data as JSON [here](https://pool.pm/test/metadata)
 - https://github.com/armada-alliance/cardano-minter
 - https://github.com/armada-alliance/cardano-minter-collection
 - https://github.com/nateshmbhat/cardano-nft-minter
+
+## Resources
+
+- [Royalties CIP](https://cips.cardano.org/cips/cip27/#simplesummary)
