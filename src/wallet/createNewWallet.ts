@@ -1,4 +1,4 @@
-import { lucid } from './lucid.ts'
+import { lucid } from '../lucid.ts'
 
 export const createNewWallet = async () => {
   const seedPhrase = lucid.utils.generateSeedPhrase()

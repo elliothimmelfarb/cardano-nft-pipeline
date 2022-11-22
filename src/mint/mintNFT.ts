@@ -4,8 +4,8 @@ import {
   Unit,
   utf8ToHex,
 } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
-import { getWallet } from './getWallet.ts'
-import { lucid } from './lucid.ts'
+import { getWallet } from '../wallet/getWallet.ts'
+import { lucid } from '../lucid.ts'
 
 export const mintNFT = async (name: string) => {
   const wallet = getWallet()
