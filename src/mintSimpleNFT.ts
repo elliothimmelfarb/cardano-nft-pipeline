@@ -32,19 +32,17 @@ export const mintSimpleNFT = async (name: string) => {
   const unit: Unit = policyId + utf8ToHex(name)
 
   const metadata = {
-    '721': {
-      [policyId]: {
-        Howdy: {
-          name: 'Howdy1',
-          description: '<optional>',
-          sha256: '<required>',
-          type: 'svg',
-          image: 'https://developers.cardano.org/img/cardano-white.svg',
-          location: {
-            ipfs: '<required>',
-            https: '<optional>',
-            arweave: '<optional>',
-          },
+    [policyId]: {
+      Howdy: {
+        name: 'Howdy1',
+        description: '<optional>',
+        sha256: '<required>',
+        type: 'svg',
+        image: 'https://developers.cardano.org/img/cardano-white.svg',
+        location: {
+          ipfs: '<required>',
+          https: '<optional>',
+          arweave: '<optional>',
         },
       },
     },
@@ -53,7 +51,7 @@ export const mintSimpleNFT = async (name: string) => {
   const tx = await lucid
     .newTx()
     .mintAssets({ [unit]: 1n })
-    .attachMetadata(1, metadata)
+    .attachMetadata(721, metadata)
     .validTo(Date.now() + 100000)
     .attachMintingPolicy(mintingPolicy)
     .complete()
@@ -62,5 +60,5 @@ export const mintSimpleNFT = async (name: string) => {
 
   const txHash = await signedTx.submit()
 
-  console.log(txHash)
+  console.log('txHash:', txHash)
 }
