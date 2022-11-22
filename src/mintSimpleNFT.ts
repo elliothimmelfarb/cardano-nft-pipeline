@@ -33,11 +33,17 @@ export const mintSimpleNFT = async (name: string) => {
 
   const metadata = {
     [policyId]: {
-      Howdy: {
-        name: 'Howdy1',
-        description: '<optional>',
-        sha256: '<required>',
-        type: 'svg',
+      [name]: {
+        name: name,
+        description: 'An NFT minted by Lucid',
+        mediaType: 'image/svg',
+        files: [
+          {
+            mediaType: 'image/svg',
+            name: name,
+            src: 'https://developers.cardano.org/img/cardano-white.svg',
+          },
+        ],
         image: 'https://developers.cardano.org/img/cardano-white.svg',
         location: {
           ipfs: '<required>',
@@ -46,6 +52,7 @@ export const mintSimpleNFT = async (name: string) => {
         },
       },
     },
+    version: '1.0',
   }
 
   const tx = await lucid
