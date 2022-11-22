@@ -5,4 +5,4 @@ import { mintNFTs } from './mint/mintNFTs.ts'
 // createNewWallet()
 getWalletAddress()
 // getWalletUtxos()
-mintNFTs('Howdy')
+mintNFTs()
