@@ -22,3 +22,9 @@ $ deno task run
 ## Test Cardano NFT metadata
 
 Paste metadata data as JSON [here](https://pool.pm/test/metadata)
+
+## Other projects to look at as examples
+
+- https://github.com/armada-alliance/cardano-minter
+- https://github.com/armada-alliance/cardano-minter-collection
+- https://github.com/nateshmbhat/cardano-nft-minter
