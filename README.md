@@ -2,7 +2,7 @@
 
 This project uses [Deno](https://deno.land/).
 
-### Setup:
+## Setup
 
 Uses [Deno.env](https://deno.land/manual@v1.28.0/basics/env_variables#built-in-denoenv) for secrets.
 
@@ -13,8 +13,12 @@ Deno.env.set('BLOCKFROST_PROJECT_ID', '<your blockfrost project ID>')
 Deno.env.set('SEED_PHRASE', '<minting wallet seed phrase>')
 ```
 
-### Run:
+## Run
 
 ```
 $ deno task run
 ```
+
+## Test Cardano NFT metadata
+
+Paste metadata data as JSON [here](https://pool.pm/test/metadata)

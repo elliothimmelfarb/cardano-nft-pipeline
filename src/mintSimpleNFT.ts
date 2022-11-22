@@ -45,15 +45,12 @@ export const mintSimpleNFT = async (name: string) => {
           },
         ],
         image: 'https://developers.cardano.org/img/cardano-white.svg',
-        location: {
-          ipfs: '<required>',
-          https: '<optional>',
-          arweave: '<optional>',
-        },
       },
     },
     version: '1.0',
   }
+
+  console.log('metadata:', JSON.stringify(metadata))
 
   const tx = await lucid
     .newTx()
