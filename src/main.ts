@@ -1,8 +1,8 @@
 import '../env.ts'
 import { getWalletAddress } from './getWalletAddress.ts'
-import { mintSimpleNFT } from './mintSimpleNFT.ts'
+import { mintNFT } from './mintNFT.ts'
 
 // createNewWallet()
 getWalletAddress()
 // getWalletUtxos()
-mintSimpleNFT('Howdy')
+mintNFT('Howdy')

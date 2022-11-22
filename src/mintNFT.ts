@@ -7,7 +7,7 @@ import {
 import { getWallet } from './getWallet.ts'
 import { lucid } from './lucid.ts'
 
-export const mintSimpleNFT = async (name: string) => {
+export const mintNFT = async (name: string) => {
   const wallet = getWallet()
 
   if (!wallet) return console.error('no wallet found')
