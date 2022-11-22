@@ -1,36 +1,17 @@
-import {
-  MintingPolicy,
-  PolicyId,
-  Unit,
-  utf8ToHex,
-} from 'https://deno.land/x/lucid@0.7.6/mod.ts'
+import { Unit, utf8ToHex } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 import { lucid } from '../lucid.ts'
+import { mintingPolicy } from './mintingPolicy.ts'
 
 export const mintNFTs = async (name: string) => {
   const wallet = getWallet()
 
   if (!wallet) return console.error('no wallet found')
 
-  const { paymentCredential } = lucid.utils.getAddressDetails(
-    await wallet.address(),
-  )
-
-  const mintingPolicy: MintingPolicy = lucid.utils.nativeScriptFromJson({
-    type: 'all',
-    scripts: [
-      { type: 'sig', keyHash: paymentCredential?.hash! },
-      {
-        type: 'before',
-        slot: lucid.utils.unixTimeToSlot(Date.now() + 1000000),
-      },
-    ],
-  })
-
-  const policyId: PolicyId = lucid.utils.mintingPolicyToId(mintingPolicy)
+  const policy = await mintingPolicy()
 
   const metadata = {
-    [policyId]: {
+    [policy.id]: {
       [name]: {
         name: name,
         description: 'An NFT minted by Lucid',
@@ -68,12 +49,12 @@ export const mintNFTs = async (name: string) => {
   const tx = await lucid
     .newTx()
     .mintAssets({
-      [policyId + utf8ToHex(name)]: 1n,
-      [policyId + utf8ToHex(name + 2)]: 1n,
+      [policy.id + utf8ToHex(name)]: 1n,
+      [policy.id + utf8ToHex(name + 2)]: 1n,
     })
     .attachMetadata(721, metadata)
     .validTo(Date.now() + 100000)
-    .attachMintingPolicy(mintingPolicy)
+    .attachMintingPolicy(policy.script)
     .complete()
 
   const signedTx = await tx.sign().complete()
