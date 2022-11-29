@@ -6,4 +6,6 @@ export const getWalletAddress = async () => {
   const address = await wallet.address()
 
   console.log('address:', address)
+
+  return address
 }
