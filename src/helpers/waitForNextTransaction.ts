@@ -1,4 +1,4 @@
-import { getWallet } from './wallet/getWallet.ts'
+import { getWallet } from '../wallet/getWallet.ts'
 
 export const waitForNextTransaction = async () => {
   const utxos = await getWallet().getUtxos()
