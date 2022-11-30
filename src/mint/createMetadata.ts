@@ -1,8 +1,4 @@
-import {
-  PolicyId,
-  Unit,
-  utf8ToHex,
-} from 'https://deno.land/x/lucid@0.7.6/mod.ts'
+import { PolicyId, utf8ToHex } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { config } from '../config.ts'
 
 const inputAssets = [
@@ -14,7 +10,7 @@ const inputAssets = [
   },
   {
     mediaType: 'image/png',
-    image: 'QmWdrHV497Twq24rSUMdDRgh5F8Ag1QQqAUjS9gr4e4vgY',
+    image: 'QmVyjCtqVKTJFgGA8DqFUW36f6EdfkrGJhj7XkR1cv4DnS',
     meta1: 'tray',
     meta2: 'tro',
   },
@@ -57,7 +53,7 @@ export const createMetadata = (policyId: PolicyId) => {
     version: '1.0',
   }
 
-  console.log('metadata:', JSON.stringify({ 721: metadata }))
+  // console.log('metadata:', JSON.stringify({ 721: metadata }))
 
   return {
     assets,
