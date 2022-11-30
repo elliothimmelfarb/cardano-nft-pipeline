@@ -2,7 +2,7 @@ import { lucid } from '../lucid.ts'
 import { mintingPolicy } from './mintingPolicy.ts'
 import { createMetadata } from './createMetadata.ts'
 import { mintRoyalties } from './mintRoyalties.ts'
-import { waitForNextTransaction } from '../waitForNextTransaction.ts'
+import { waitForNextTransaction } from '../helpers/waitForNextTransaction.ts'
 
 export const mintNFTs = async () => {
   const { policyId, policyScript } = await mintingPolicy()
@@ -10,8 +10,6 @@ export const mintNFTs = async () => {
   const { assets, metadata } = createMetadata(policyId)
 
   await mintRoyalties({ policyId, policyScript })
-
-  await waitForNextTransaction()
 
   const tx = await lucid
     .newTx()
@@ -25,5 +23,5 @@ export const mintNFTs = async () => {
 
   const txHash = await signedTx.submit()
 
-  console.log('NFTs txHash:', txHash)
+  await waitForNextTransaction('NFTs mint', txHash)
 }

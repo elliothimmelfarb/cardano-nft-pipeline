@@ -1,28 +1,11 @@
-import { getWallet } from '../wallet/getWallet.ts'
+import { TxHash } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
+import { blockFrost } from '../lucid.ts'
 
-export const waitForNextTransaction = async () => {
-  const utxos = await getWallet().getUtxos()
+export const waitForNextTransaction = async (label: string, txHash: TxHash) => {
+  console.log(`Waiting for ${label} transaction to complete...`)
+  console.log('txHash:', txHash)
 
-  const initialUtxoCount = utxos.length
+  await blockFrost.awaitTx(txHash)
 
-  let currentUtxoCount = initialUtxoCount
-
-  while (currentUtxoCount === initialUtxoCount) {
-    console.log('Waiting for transaction to complete...')
-
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    const utxos = await getWallet().getUtxos()
-
-    currentUtxoCount = utxos.length
-
-    console.log(
-      'initialUtxoCount:',
-      initialUtxoCount,
-      'currentUtxoCount:',
-      currentUtxoCount,
-    )
-  }
-
-  return
+  console.log('Completed!')
 }
