@@ -4,6 +4,9 @@ import { lucid } from '../cadrano.ts'
 import { waitForNextTransaction } from '../helpers/waitForNextTransaction.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 
+/**
+ * Takes the minting policy parts and mints and burns an unnamed NFT with royalties data.
+ */
 export const mintRoyaltiesNFT = async ({
   policyId,
   policyScript,
