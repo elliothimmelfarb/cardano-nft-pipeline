@@ -1,9 +1,9 @@
 import { TxHash } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
-import { lucid } from '../lucid.ts'
-import { mintingPolicy } from '../mint/mintingPolicy.ts'
+import { lucid } from '../cadrano.ts'
+import { createMintingPolicy } from '../mint/createMintingPolicy.ts'
 
 export async function burnRoyaltiesNFT(
-  policy: Awaited<ReturnType<typeof mintingPolicy>>,
+  policy: Awaited<ReturnType<typeof createMintingPolicy>>,
 ): Promise<TxHash> {
   const { policyId, policyScript } = policy
 

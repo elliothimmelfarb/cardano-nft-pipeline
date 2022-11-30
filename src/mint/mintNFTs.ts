@@ -1,15 +1,15 @@
-import { lucid } from '../lucid.ts'
-import { mintingPolicy } from './mintingPolicy.ts'
-import { createMetadata } from './createMetadata.ts'
-import { mintRoyalties } from './mintRoyalties.ts'
+import { lucid } from '../cadrano.ts'
 import { waitForNextTransaction } from '../helpers/waitForNextTransaction.ts'
+import { createMetadata } from './createMetadata.ts'
+import { createMintingPolicy } from './createMintingPolicy.ts'
+import { mintRoyaltiesNFT } from './mintRoyaltiesNFT.ts'
 
 export const mintNFTs = async () => {
-  const { policyId, policyScript } = await mintingPolicy()
+  const { policyId, policyScript } = await createMintingPolicy()
 
   const { assets, metadata } = createMetadata(policyId)
 
-  await mintRoyalties({ policyId, policyScript })
+  await mintRoyaltiesNFT({ policyId, policyScript })
 
   const tx = await lucid
     .newTx()

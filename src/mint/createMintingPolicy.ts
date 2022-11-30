@@ -1,8 +1,8 @@
 import { MintingPolicy, PolicyId } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
-import { lucid } from '../lucid.ts'
+import { lucid } from '../cadrano.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 
-export const mintingPolicy = async () => {
+export const createMintingPolicy = async () => {
   const wallet = getWallet()
 
   const { paymentCredential } = lucid.utils.getAddressDetails(
