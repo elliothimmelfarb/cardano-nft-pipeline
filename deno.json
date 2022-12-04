@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "run": "deno run --allow-net --allow-env src/main.ts"
+    "run": "deno run --allow-net --allow-env src/main.ts",
+    "print-config": "deno run --allow-net --allow-env src/tasks/printConfig.ts"
   }
 }
