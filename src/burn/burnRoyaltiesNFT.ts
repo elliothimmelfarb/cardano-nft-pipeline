@@ -1,5 +1,5 @@
 import { TxHash } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
-import { lucid } from '../cadrano.ts'
+import { lucid } from '../cardano.ts'
 import { createMintingPolicy } from '../mint/createMintingPolicy.ts'
 
 export async function burnRoyaltiesNFT(

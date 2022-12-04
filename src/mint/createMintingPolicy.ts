@@ -1,5 +1,5 @@
 import { MintingPolicy, PolicyId } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
-import { lucid } from '../cadrano.ts'
+import { lucid } from '../cardano.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 
 export const createMintingPolicy = async () => {

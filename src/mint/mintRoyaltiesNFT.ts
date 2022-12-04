@@ -1,7 +1,7 @@
 import { PolicyId, Script } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { burnRoyaltiesNFT } from '../burn/burnRoyaltiesNFT.ts'
-import { lucid } from '../cadrano.ts'
-import { waitForNextTransaction } from '../helpers/waitForNextTransaction.ts'
+import { lucid } from '../cardano.ts'
+import { waitForTransaction } from '../helpers/waitForTransaction.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 
 /**
@@ -30,12 +30,12 @@ export const mintRoyaltiesNFT = async ({
 
   console.log('Royalties txHash:', txHash)
 
-  await waitForNextTransaction('royalties mint', txHash)
+  await waitForTransaction('royalties mint', txHash)
 
   const burnTxHash = await burnRoyaltiesNFT({
     policyId,
     policyScript,
   })
 
-  await waitForNextTransaction('royalties burn', burnTxHash)
+  await waitForTransaction('royalties burn', burnTxHash)
 }

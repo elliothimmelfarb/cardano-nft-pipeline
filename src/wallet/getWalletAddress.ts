@@ -1,11 +1,7 @@
 import { getWallet } from './getWallet.ts'
 
-export const getWalletAddress = async () => {
+export const getWalletAddress = () => {
   const wallet = getWallet()
 
-  const address = await wallet.address()
-
-  console.log('address:', address)
-
-  return address
+  return wallet.address()
 }

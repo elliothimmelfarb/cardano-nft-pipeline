@@ -1,4 +1,4 @@
-import { lucid } from '../lucid.ts'
+import { lucid } from '../cardano.ts'
 
 export const getWallet = () => {
   const seedPhrase = Deno.env.get('SEED_PHRASE')

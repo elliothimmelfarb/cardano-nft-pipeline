@@ -1,9 +1,7 @@
 import { getWallet } from './getWallet.ts'
 
-export const getWalletUtxos = async () => {
+export const getWalletUtxos = () => {
   const wallet = getWallet()
 
-  const utxos = await wallet.getUtxos()
-
-  console.log('balance:', utxos)
+  return wallet.getUtxos()
 }

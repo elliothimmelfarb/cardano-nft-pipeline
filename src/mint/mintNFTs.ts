@@ -1,5 +1,5 @@
-import { lucid } from '../cadrano.ts'
-import { waitForNextTransaction } from '../helpers/waitForNextTransaction.ts'
+import { lucid } from '../cardano.ts'
+import { waitForTransaction } from '../helpers/waitForTransaction.ts'
 import { createMetadata } from './createMetadata.ts'
 import { createMintingPolicy } from './createMintingPolicy.ts'
 import { mintRoyaltiesNFT } from './mintRoyaltiesNFT.ts'
@@ -23,5 +23,5 @@ export const mintNFTs = async () => {
 
   const txHash = await signedTx.submit()
 
-  await waitForNextTransaction('NFTs mint', txHash)
+  await waitForTransaction('NFTs mint', txHash)
 }
