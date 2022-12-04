@@ -1,6 +1,7 @@
 {
   "tasks": {
     "run": "deno run --allow-net --allow-env src/main.ts",
-    "print-config": "deno run --allow-net --allow-env src/tasks/printConfig.ts"
+    "print-config": "deno run --allow-net --allow-env src/tasks/printConfig.ts",
+    "new-wallet": "deno run --allow-net --allow-env src/tasks/newWallet.ts"
   }
 }
