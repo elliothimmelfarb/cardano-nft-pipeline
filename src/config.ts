@@ -23,11 +23,12 @@ export const config = {
   network,
   projectId,
 
-  // Local
-  inputFolder: '',
-
   // Collection
   collectionDescription:
     'Here is a beautiful description for this Testing Collection',
   collectionName: 'Testing Collection',
+  royalties: {
+    rate: '0.03',
+    addr: '',
+  },
 }
