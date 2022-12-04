@@ -13,11 +13,22 @@ Deno.env.set('BLOCKFROST_PROJECT_ID', '<your blockfrost project ID>')
 Deno.env.set('SEED_PHRASE', '<minting wallet seed phrase>')
 ```
 
-## Run
+## Tasks
 
+Use `deno task [task]` in your terminal pointed at root to run [Deno tasks](TODO: add link).
+
+Exmaple:
+
+```bash
+deno task mint
 ```
-$ deno task run
-```
+
+Tasks are declared in the `deno.json` file.
+
+### Task List
+
+- `new-wallet`: Logs wallet address and seed phrase to console.
+- `print-config`: Logs the config object to the console for debugging.
 
 ## Test Cardano NFT metadata
 
