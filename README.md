@@ -38,9 +38,9 @@ Paste metadata data as JSON [here](https://pool.pm/test/metadata)
 
 ## Other projects to look at as examples
 
-- https://github.com/armada-alliance/cardano-minter
-- https://github.com/armada-alliance/cardano-minter-collection
-- https://github.com/nateshmbhat/cardano-nft-minter
+- [armada-alliance/cardano-minter](https://github.com/armada-alliance/cardano-minter)
+- [armada-alliance/cardano-minter-collection](https://github.com/armada-alliance/cardano-minter-collection)
+- [nateshmbhat/cardano-nft-minter](https://github.com/nateshmbhat/cardano-nft-minter)
 
 ## Resources
 
