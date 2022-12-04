@@ -30,6 +30,7 @@ Tasks are declared in the `deno.json` file.
 - `new-wallet`: Logs wallet address and seed phrase to console.
 - `mint-nfts`: Mints NFTs as described by metadata. Also mints and burns a royalties NFT for the policy ID.
 - `log-config`: Logs the config object to the console for debugging.
+- `log-metadata`: Logs generated metadata and assets list to the console for debugging.
 
 ## Test Cardano NFT metadata
 
