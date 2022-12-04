@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "mint-nfts": "deno run --allow-net --allow-env src/tasks/mintNfts.ts",
-    "print-config": "deno run --allow-net --allow-env src/tasks/printConfig.ts",
-    "new-wallet": "deno run --allow-net --allow-env src/tasks/newWallet.ts"
+    "mint-nfts": "deno run --allow-net --allow-env src/tasks/mintNFTs.task.ts",
+    "print-config": "deno run --allow-net --allow-env src/tasks/printConfig.task.ts",
+    "new-wallet": "deno run --allow-net --allow-env src/tasks/newWallet.task.ts"
   }
 }
