@@ -15,12 +15,13 @@ Deno.env.set('SEED_PHRASE', '<minting wallet seed phrase>')
 
 ## Tasks
 
-Use `deno task [task]` in your terminal pointed at root to run [Deno tasks](TODO: add link).
+Use `deno task [task]` in your terminal to run [Deno Tasks](https://deno.land/manual@v1.28.3/tools/task_runnerk).
 
 Exmaple:
 
 ```bash
-deno task mint
+$ deno task log-metadata
+Task log-metadata deno run --allow-net --allow-env src/tasks/logMetadata.task.ts
 ```
 
 Tasks are declared in the `deno.json` file.
