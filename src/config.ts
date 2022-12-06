@@ -24,7 +24,7 @@ export const config = {
   projectId,
 
   // local
-  imagesPath: 'input/images',
+  imagesPath: '/inputs/images',
 
   // Collection
   collectionDescription:
