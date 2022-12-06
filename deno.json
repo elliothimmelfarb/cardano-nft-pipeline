@@ -4,6 +4,7 @@
     "log-config": "deno run --allow-net --allow-env src/tasks/logConfig.task.ts",
     "new-wallet": "deno run --allow-net --allow-env src/tasks/newWallet.task.ts",
     "log-metadata": "deno run --allow-net --allow-env src/tasks/logMetadata.task.ts",
-    "log-utxos": "deno run --allow-net --allow-env src/tasks/logUtxos.task.ts"
+    "log-utxos": "deno run --allow-net --allow-env src/tasks/logUtxos.task.ts",
+    "log-balance": "deno run --allow-net --allow-env src/tasks/logBalance.task.ts"
   }
 }
