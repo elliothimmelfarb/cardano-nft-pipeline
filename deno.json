@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "mint-nfts": "deno run --allow-net --allow-env src/tasks/mintNFTs.task.ts",
+    "mint-collection": "deno run --allow-net --allow-env src/tasks/mintNFTCollection.task.ts",
     "log-config": "deno run --allow-net --allow-env src/tasks/logConfig.task.ts",
     "new-wallet": "deno run --allow-net --allow-env src/tasks/newWallet.task.ts",
     "log-metadata": "deno run --allow-net --allow-env src/tasks/logMetadata.task.ts"
