@@ -23,6 +23,9 @@ export const config = {
   network,
   projectId,
 
+  // local
+  imagesPath: 'input/images',
+
   // Collection
   collectionDescription:
     'Here is a beautiful description for this Testing Collection',
