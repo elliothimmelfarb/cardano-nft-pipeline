@@ -7,5 +7,5 @@ export const waitForTransaction = async (label: string, txHash: TxHash) => {
 
   await blockFrost.awaitTx(txHash)
 
-  console.log('Transaction Completed!')
+  console.log('Transaction Completed!\n')
 }
