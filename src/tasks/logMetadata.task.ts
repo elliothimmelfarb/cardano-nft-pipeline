@@ -1,4 +1,4 @@
-import { createMetadata } from '../mint/createMetadata.ts'
+import { createMetadata } from '../metadata/createMetadata.ts'
 
 const metadata = createMetadata('[debugPolicyId]')
 

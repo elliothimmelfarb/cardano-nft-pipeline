@@ -53,8 +53,6 @@ export const createMetadata = (policyId: PolicyId) => {
     version: '1.0',
   }
 
-  // console.log('metadata:', JSON.stringify({ 721: metadata }))
-
   return {
     assets,
     metadata,

@@ -1,6 +1,6 @@
 import { lucid } from '../cardano.ts'
 import { waitForTransaction } from '../helpers/waitForTransaction.ts'
-import { createMetadata } from './createMetadata.ts'
+import { createMetadata } from '../metadata/createMetadata.ts'
 import { createMintingPolicy } from './createMintingPolicy.ts'
 import { mintRoyaltiesNFT } from './mintRoyaltiesNFT.ts'
 
