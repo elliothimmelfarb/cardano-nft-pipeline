@@ -1,3 +1,3 @@
-import { mintNFTs } from '../mint/mintNFTs.ts'
+import { mintNFTCollection } from '../mint/mintNFTCollection.ts'
 
-mintNFTs()
+mintNFTCollection()

@@ -4,7 +4,7 @@ import { createMetadata } from './createMetadata.ts'
 import { createMintingPolicy } from './createMintingPolicy.ts'
 import { mintRoyaltiesNFT } from './mintRoyaltiesNFT.ts'
 
-export const mintNFTs = async () => {
+export const mintNFTCollection = async () => {
   const { policyId, policyScript } = await createMintingPolicy()
 
   const { assets, metadata } = createMetadata(policyId)
