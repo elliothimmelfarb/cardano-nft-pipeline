@@ -1,9 +1,9 @@
 import { config } from '../config.ts'
 
-export const createInputAssets = async () => {
+export const createAssets = async () => {
   const dir = await Deno.readDirSync(Deno.cwd() + config.imagesPath)
 
-  for await (const dirEntry of dir) {
+  for (const dirEntry of dir) {
     if (!dirEntry.name.includes('.png')) continue
 
     console.log(dirEntry.name)

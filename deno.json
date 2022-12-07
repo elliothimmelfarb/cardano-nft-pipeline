@@ -6,6 +6,6 @@
     "log-metadata": "deno run --allow-net --allow-env src/tasks/logMetadata.task.ts",
     "log-utxos": "deno run --allow-net --allow-env src/tasks/logUtxos.task.ts",
     "log-balance": "deno run --allow-net --allow-env src/tasks/logBalance.task.ts",
-    "create-input-assets": "deno run --allow-net --allow-env --allow-read src/tasks/createInputAssets.task.ts"
+    "create-assets": "deno run --allow-net --allow-env --allow-read src/tasks/createAssets.task.ts"
   }
 }
