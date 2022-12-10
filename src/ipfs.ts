@@ -1,3 +1,4 @@
+import '../env.ts'
 import Blockfrost from 'npm:@blockfrost/blockfrost-js'
 
 const ipfsProjectId = Deno.env.get('BLOCKFROST_IPFS_PROJECT_ID')
