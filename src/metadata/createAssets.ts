@@ -45,7 +45,7 @@ export const createAssets = async () => {
 
     const data = await exifr.parse(buffer)
 
-    const metadata = JSON.parse(data['sd-metadata'])
+    const metadata = JSON.parse(data['sd-metadata']) as Record<string, unknown>
 
     console.log(`Adding ${dirEntry.name} to IPFS...`)
     const added = await ipfs.add(imagePath)
@@ -58,5 +58,5 @@ export const createAssets = async () => {
     assets.push(organizedMetadata)
   }
 
-  console.log(assets)
+  return assets as Record<string, unknown>[]
 }

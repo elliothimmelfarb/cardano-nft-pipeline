@@ -1,22 +1,10 @@
 import { PolicyId, utf8ToHex } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { config } from '../config.ts'
-
-const inputAssets = [
-  {
-    mediaType: 'image/png',
-    image: 'QmciQW1JFjzjxvqMKuQ2M2ohuXENf3sEG3HsyGAqQTRGNZ',
-    meta1: 'ooga',
-    meta2: 'booga',
-  },
-  {
-    mediaType: 'image/png',
-    image: 'QmVyjCtqVKTJFgGA8DqFUW36f6EdfkrGJhj7XkR1cv4DnS',
-    meta1: 'tray',
-    meta2: 'tro',
-  },
-]
+import { createAssets } from './createAssets.ts'
 
 export const createMetadata = (policyId: PolicyId) => {
+  const inputAssets = createAssets()
+
   const metadataAssets = inputAssets
     .map((asset, index) => {
       const name = `${config.collectionName} #${index + 1}`
