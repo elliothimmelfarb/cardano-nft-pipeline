@@ -1,7 +1,9 @@
 import exifr from 'npm:exifr'
 import { config } from '../config.ts'
 
-const organizeMetadata = (metadata: any) => {
+import { ipfs } from '../ipfs.ts'
+
+const organizeMetadata = (metadata: any, ipfsHash: string) => {
   const promptParts = metadata.image.prompt[0].prompt
     .split(',')
     .reduce((out: { [key: string]: string }, part: string, index: number) => {
@@ -17,9 +19,9 @@ const organizeMetadata = (metadata: any) => {
     ...promptParts,
     'prompt parts count': Object.values(promptParts).length,
     mediaType: 'image/png',
+    image: ipfsHash,
   }
 
-  delete out.image
   delete out.prompt
   delete out.init_image_path
   delete out.orig_hash
@@ -45,9 +47,13 @@ export const createAssets = async () => {
 
     const metadata = JSON.parse(data['sd-metadata'])
 
-    const organizedMetadata = organizeMetadata(metadata)
+    console.log(`Adding ${dirEntry.name} to IPFS...`)
+    const added = await ipfs.add(imagePath)
+    console.log('Added! Now pinning...')
+    await ipfs.pin(added.ipfs_hash)
+    console.log('Pinned!\n')
 
-    // upload to ipfs
+    const organizedMetadata = organizeMetadata(metadata, added.ipfs_hash)
 
     assets.push(organizedMetadata)
   }
