@@ -1,38 +1,12 @@
 import exifr from 'npm:exifr'
 import { config } from '../config.ts'
-
 import { ipfs } from '../ipfs.ts'
-
-const organizeMetadata = (metadata: any, ipfsHash: string) => {
-  const promptParts = metadata.image.prompt[0].prompt
-    .split(',')
-    .reduce((out: { [key: string]: string }, part: string, index: number) => {
-      return {
-        ...out,
-        [`prompt part ${index + 1}`]: part.trim(),
-      }
-    }, {})
-
-  const out = {
-    ...metadata,
-    ...metadata.image,
-    ...promptParts,
-    'prompt parts count': Object.values(promptParts).length,
-    mediaType: 'image/png',
-    image: ipfsHash,
-  }
-
-  delete out.prompt
-  delete out.init_image_path
-  delete out.orig_hash
-
-  return out
-}
+import { processors } from './processors/index.ts'
 
 export const createAssets = async () => {
   const assets = []
 
-  const dir = await Deno.readDirSync(Deno.cwd() + config.imagesPath)
+  const dir = Deno.readDirSync(Deno.cwd() + config.imagesPath)
 
   for (const dirEntry of dir) {
     if (dirEntry.name === '.gitkeep') continue
@@ -53,7 +27,7 @@ export const createAssets = async () => {
     await ipfs.pin(added.ipfs_hash)
     console.log('Pinned!\n')
 
-    const organizedMetadata = organizeMetadata(metadata, added.ipfs_hash)
+    const organizedMetadata = processors['invokeAI'](metadata, added.ipfs_hash)
 
     assets.push(organizedMetadata)
   }
