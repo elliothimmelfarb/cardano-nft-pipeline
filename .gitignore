@@ -3,3 +3,5 @@
 env.ts
 
 inputs/**/*.png
+
+outputs/**/*.json

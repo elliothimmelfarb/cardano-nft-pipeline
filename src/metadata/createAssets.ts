@@ -5,6 +5,7 @@ import { processors } from './processors/index.ts'
 
 export const createAssets = async () => {
   const assets = []
+  const hashes = []
 
   const dir = Deno.readDirSync(Deno.cwd() + config.imagesPath)
 
@@ -12,8 +13,6 @@ export const createAssets = async () => {
     if (dirEntry.name === '.gitkeep') continue
 
     const imagePath = `${Deno.cwd()}${config.imagesPath}/${dirEntry.name}`
-
-    console.log('path:', imagePath)
 
     const buffer = await Deno.readFile(imagePath)
 
@@ -25,12 +24,24 @@ export const createAssets = async () => {
     const added = await ipfs.add(imagePath)
     console.log('Added! Now pinning...')
     await ipfs.pin(added.ipfs_hash)
+    hashes.push(added.ipfs_hash)
     console.log('Pinned!\n')
 
     const organizedMetadata = processors['invokeAI'](metadata, added.ipfs_hash)
 
     assets.push(organizedMetadata)
   }
+
+  const encoder = new TextEncoder()
+  const data = encoder.encode(JSON.stringify({ assets, hashes }, null, 2))
+
+  Deno.writeFileSync(
+    `${Deno.cwd()}/outputs/metadata/${config.collectionName
+      .split(' ')
+      .join('_')
+      .toLowerCase()}_metadata.json`,
+    data,
+  )
 
   return assets as Record<string, unknown>[]
 }
