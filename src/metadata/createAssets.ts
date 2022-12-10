@@ -39,7 +39,7 @@ export const createAssets = async () => {
     `${Deno.cwd()}/outputs/metadata/${config.collectionName
       .split(' ')
       .join('_')
-      .toLowerCase()}_metadata.json`,
+      .toLowerCase()}_assets.json`,
     data,
   )
 

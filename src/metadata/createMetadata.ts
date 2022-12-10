@@ -41,6 +41,17 @@ export const createMetadata = (policyId: PolicyId) => {
     version: '1.0',
   }
 
+  const encoder = new TextEncoder()
+  const data = encoder.encode(JSON.stringify({ assets, metadata }, null, 2))
+
+  Deno.writeFileSync(
+    `${Deno.cwd()}/outputs/metadata/${config.collectionName
+      .split(' ')
+      .join('_')
+      .toLowerCase()}_metadata.json`,
+    data,
+  )
+
   return {
     assets,
     metadata,
