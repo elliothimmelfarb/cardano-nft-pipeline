@@ -15,6 +15,7 @@ const organizeMetadata = (metadata: any) => {
     ...metadata,
     ...metadata.image,
     ...promptParts,
+    'prompt parts count': Object.values(promptParts).length,
     mediaType: 'image/png',
   }
 
