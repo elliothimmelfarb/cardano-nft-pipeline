@@ -12,7 +12,10 @@ export const verifyPinned = async () => {
     ),
   ) as { hashes: string[] }
 
-  const pins = (await ipfs.list()) as unknown as ListResponse[]
+  const pins = (await ipfs.list({
+    count: hashes.length + 10,
+    order: 'desc',
+  })) as unknown as ListResponse[]
 
   // create dictionary of hashes to state
   const hashState = pins.reduce((out, pin) => {
