@@ -3,14 +3,13 @@ import { config } from '../config.ts'
 import { ipfs } from '../ipfs.ts'
 
 export const verifyPinned = async () => {
-  const { hashes } = JSON.parse(
-    Deno.readTextFileSync(
-      `${Deno.cwd()}/outputs/metadata/${config.collectionName
-        .split(' ')
-        .join('_')
-        .toLowerCase()}_assets.json`,
-    ),
-  ) as { hashes: string[] }
+  const fileContents = await Deno.readTextFile(
+    `${Deno.cwd()}/outputs/metadata/${config.collectionName
+      .split(' ')
+      .join('_')
+      .toLowerCase()}_assets.json`,
+  )
+  const { hashes } = JSON.parse(fileContents) as { hashes: string[] }
 
   const pins = (await ipfs.list({
     count: hashes.length + 10,
@@ -44,5 +43,3 @@ export const verifyPinned = async () => {
     console.log('You can now run the minting task!')
   }
 }
-
-verifyPinned()
