@@ -9,7 +9,11 @@ Uses [Deno.env](https://deno.land/manual@v1.28.0/basics/env_variables#built-in-d
 - create `env.ts` file in root with the following `Deno.env.set()` lines:
 
 ```typescript
-Deno.env.set('BLOCKFROST_PROJECT_ID', '<your blockfrost project ID>')
+Deno.env.set('BLOCKFROST_PROJECT_ID', '<your Blockfrost Cardano project ID>')
+Deno.env.set(
+  'BLOCKFROST_IPFS_PROJECT_ID',
+  '<your blockfrost IPFS project ID>',
+)
 Deno.env.set('SEED_PHRASE', '<minting wallet seed phrase>')
 ```
 
@@ -28,10 +32,7 @@ Tasks are declared in the `deno.json` file.
 
 ### Task List
 
-- `new-wallet`: Logs wallet address and seed phrase to console.
-- `mint-collection`: Mints NFT collection as described by metadata. Also mints and burns a royalties NFT for the policy ID.
-- `log-config`: Logs the config object to the console for debugging.
-- `log-metadata`: Logs generated metadata and assets list to the console for debugging.
+Look `src/tasks` directory to see task files.
 
 ## Test Cardano NFT metadata
 
