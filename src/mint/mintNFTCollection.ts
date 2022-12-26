@@ -7,7 +7,7 @@ import { mintRoyaltiesNFT } from './mintRoyaltiesNFT.ts'
 export const mintNFTCollection = async () => {
   const { policyId, policyScript } = await createMintingPolicy()
 
-  const { assets, metadata } = createMetadata(policyId)
+  const { assets, metadata } = await createMetadata(policyId)
 
   await mintRoyaltiesNFT({ policyId, policyScript })
 
