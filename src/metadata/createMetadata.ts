@@ -44,7 +44,11 @@ export const createMetadata = async (policyId: PolicyId) => {
 
   const encoder = new TextEncoder()
   const data = encoder.encode(
-    JSON.stringify({ policyId, assets: assets.toString(), metadata }, null, 2),
+    JSON.stringify(
+      { policyId, assets: Object.keys(assets), metadata },
+      null,
+      2,
+    ),
   )
 
   Deno.writeFileSync(
