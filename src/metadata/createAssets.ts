@@ -1,5 +1,6 @@
 import exifr from 'npm:exifr'
 import { config } from '../config.ts'
+import { getCollectionFileName } from '../helpers/getCollectionFileName.ts'
 import { ipfs } from '../ipfs.ts'
 import { processors } from './processors/index.ts'
 
@@ -36,10 +37,7 @@ export const createAssets = async () => {
   const data = encoder.encode(JSON.stringify({ assets, hashes }, null, 2))
 
   Deno.writeFileSync(
-    `${Deno.cwd()}/outputs/metadata/${config.collectionName
-      .split(' ')
-      .join('_')
-      .toLowerCase()}_assets.json`,
+    `${Deno.cwd()}/outputs/metadata/${getCollectionFileName()}_assets.json`,
     data,
   )
 
