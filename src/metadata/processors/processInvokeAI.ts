@@ -17,12 +17,7 @@ export const processInvokeAI = (metadata: any, ipfsHash: string) => {
     image: ipfsHash,
   }
 
-  out['traits count'] = Object.keys(out).length
-
-  delete out.prompt
-  delete out.init_image_path
-  delete out.orig_hash
-
+  // Handle postprocessing
   const postprocessing = Object.entries(out.postprocessing[0]).reduce(
     (acc, entry) => {
       return {
@@ -33,6 +28,16 @@ export const processInvokeAI = (metadata: any, ipfsHash: string) => {
     {},
   )
 
+  out['generated height'] = out.height
+  out['generated width'] = out.width
+
+  out.height = out.height * postprocessing['postprocessing scale']
+  out.width = out.width * postprocessing['postprocessing scale']
+
+  delete out.prompt
+  delete out.init_image_path
+  delete out.orig_hash
+  delete out.variations
   delete out.postprocessing
 
   return {
