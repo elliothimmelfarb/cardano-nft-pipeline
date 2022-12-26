@@ -40,8 +40,15 @@ export const processInvokeAI = (metadata: any, ipfsHash: string) => {
   delete out.variations
   delete out.postprocessing
 
-  return {
-    ...out,
-    ...postprocessing,
-  }
+  const finalOut = Object.entries({ ...out, ...postprocessing }).reduce(
+    (acc, entry) => {
+      return {
+        ...acc,
+        [entry[0]]: entry[1].toString(),
+      }
+    },
+    {},
+  )
+
+  return finalOut
 }
