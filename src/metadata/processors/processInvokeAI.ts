@@ -17,9 +17,26 @@ export const processInvokeAI = (metadata: any, ipfsHash: string) => {
     image: ipfsHash,
   }
 
+  out['traits count'] = Object.keys(out).length
+
   delete out.prompt
   delete out.init_image_path
   delete out.orig_hash
 
-  return out
+  const postprocessing = Object.entries(out.postprocessing[0]).reduce(
+    (acc, entry) => {
+      return {
+        ...acc,
+        [`postprocessing ${entry[0]}`]: entry[1],
+      }
+    },
+    {},
+  )
+
+  delete out.postprocessing
+
+  return {
+    ...out,
+    ...postprocessing,
+  }
 }
