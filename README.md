@@ -10,10 +10,7 @@ Uses [Deno.env](https://deno.land/manual@v1.28.0/basics/env_variables#built-in-d
 
 ```typescript
 Deno.env.set('BLOCKFROST_PROJECT_ID', '<your Blockfrost Cardano project ID>')
-Deno.env.set(
-  'BLOCKFROST_IPFS_PROJECT_ID',
-  '<your blockfrost IPFS project ID>',
-)
+Deno.env.set('BLOCKFROST_IPFS_PROJECT_ID', '<your blockfrost IPFS project ID>')
 Deno.env.set('SEED_PHRASE', '<minting wallet seed phrase>')
 ```
 
@@ -33,6 +30,13 @@ Tasks are declared in the `deno.json` file.
 ### Task List
 
 Look `src/tasks` directory to see task files.
+
+## Mint Your Collection
+
+1. Put images with appropriate metadata into `inputs/images` folder
+2. Configure shared metadata and royalties data in `src/config`
+3. Run `deno task create-assets` to create assets. You can verify the assets look correct in the JSON file create in `outputs/metadata`
+4. Verify all assets have been pinned successfully to IPFS by running `deno task verify-pinned`
 
 ## Test Cardano NFT metadata
 
