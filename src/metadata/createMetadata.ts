@@ -1,10 +1,14 @@
-import { PolicyId, utf8ToHex } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
+import { utf8ToHex } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { config } from '../config.ts'
 import { readAssetsFile } from '../helpers/readAssetsFile.ts'
+import { readPolicyFile } from '../helpers/readPolicyFile.ts'
 import { writeCollectionDataToFile } from '../helpers/writeCollectionDataToFile.ts'
 
-export const createMetadata = async (policyId: PolicyId) => {
+export const createMetadata = async () => {
+  console.log('Creating metadata...')
+
   const { assets: inputAssets } = await readAssetsFile()
+  const { policyId } = await readPolicyFile()
 
   const metadataAssets = inputAssets
     .map((asset, index) => {
@@ -42,19 +46,11 @@ export const createMetadata = async (policyId: PolicyId) => {
     version: '1.0',
   }
 
-  const encoder = new TextEncoder()
-  const data = encoder.encode(
-    JSON.stringify(
-      { policyId, assets: Object.keys(assets), metadata },
-      null,
-      2,
-    ),
-  )
-
-  await writeCollectionDataToFile('metadata', 'assets.json', data)
-
-  return {
-    assets,
+  await writeCollectionDataToFile('metadata.json', {
+    policyId,
+    assets: Object.keys(assets),
     metadata,
-  }
+  })
+
+  console.log('Metadata created!\n')
 }

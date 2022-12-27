@@ -34,7 +34,7 @@ export const createAssets = async () => {
     assets.push(organizedMetadata)
   }
 
-  await writeCollectionDataToFile('metadata', 'assets.json', { assets, hashes })
+  await writeCollectionDataToFile('assets.json', { assets, hashes })
 
   return assets as Record<string, unknown>[]
 }

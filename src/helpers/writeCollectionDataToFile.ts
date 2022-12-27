@@ -1,7 +1,6 @@
 import { getCollectionFileName } from './getCollectionFileName.ts'
 
 export const writeCollectionDataToFile = async (
-  folder: string,
   fileName: string,
   data: any,
 ) => {
@@ -9,7 +8,7 @@ export const writeCollectionDataToFile = async (
   const fileData = encoder.encode(JSON.stringify(data, null, 2))
 
   await Deno.writeFile(
-    `${Deno.cwd()}/outputs/${folder}/${getCollectionFileName()}_${fileName}`,
+    `${Deno.cwd()}/outputs/metadata/${getCollectionFileName()}_${fileName}`,
     fileData,
   )
 }

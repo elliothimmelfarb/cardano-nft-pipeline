@@ -30,7 +30,7 @@ export const createMintingPolicy = async () => {
     policyId: policyId,
   }
 
-  await writeCollectionDataToFile('metadata', 'policy.json', data)
+  await writeCollectionDataToFile('policy.json', data)
 
   console.log('Minting policy created!\n')
 }

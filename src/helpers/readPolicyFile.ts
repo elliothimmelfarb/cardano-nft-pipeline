@@ -1,4 +1,4 @@
-import { PolicyId, Script } from 'https://deno.land/x/lucid@0.8.2/mod'
+import { PolicyId, Script } from 'https://deno.land/x/lucid@0.8.2/mod.ts'
 import { getCollectionFileName } from './getCollectionFileName.ts'
 
 export const readPolicyFile = async (): Promise<{
@@ -6,7 +6,7 @@ export const readPolicyFile = async (): Promise<{
   policyScript: Script
 }> => {
   const fileData = await Deno.readFile(
-    `${Deno.cwd()}/outputs/${getCollectionFileName()}_policy.script`,
+    `${Deno.cwd()}/outputs/metadata/${getCollectionFileName()}_policy.json`,
   )
   return JSON.parse(new TextDecoder().decode(fileData))
 }
