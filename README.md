@@ -37,6 +37,8 @@ Look `src/tasks` directory to see task files.
 2. Configure shared metadata and royalties data in `src/config`
 3. Run `deno task create-assets` to create assets. You can verify the assets look correct in the JSON file create in `outputs/metadata`
 4. Verify all assets have been pinned successfully to IPFS by running `deno task verify-pinned`
+5. Create policy ID and script with `deno task create-policy`
+6. Create metadata with `deno task create-metadata`
 
 ## Test Cardano NFT metadata
 

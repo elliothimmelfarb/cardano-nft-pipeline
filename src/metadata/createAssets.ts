@@ -1,6 +1,5 @@
 import exifr from 'npm:exifr'
 import { config } from '../config.ts'
-import { getCollectionFileName } from '../helpers/getCollectionFileName.ts'
 import { writeCollectionDataToFile } from '../helpers/writeCollectionDataToFile.ts'
 import { ipfs } from '../ipfs.ts'
 import { processors } from './processors/index.ts'
