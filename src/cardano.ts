@@ -1,4 +1,4 @@
-import { Blockfrost, Lucid } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
+import { Blockfrost, Lucid } from 'https://deno.land/x/lucid@0.8.2/mod.ts'
 import { config } from './config.ts'
 
 export const blockFrost = new Blockfrost(
