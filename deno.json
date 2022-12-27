@@ -9,6 +9,7 @@
     "create-assets": "deno run -A src/tasks/createAssets.task.ts",
     "list-pinned": "deno run -A src/tasks/listPinned.task.ts",
     "verify-pinned": "deno run -A src/tasks/verifyPinned.task.ts",
-    "log-address": "deno run -A src/tasks/logAddress.task.ts"
+    "log-address": "deno run -A src/tasks/logAddress.task.ts",
+    "create-policy": "deno run -A src/tasks/createPolicy.task.ts"
   }
 }

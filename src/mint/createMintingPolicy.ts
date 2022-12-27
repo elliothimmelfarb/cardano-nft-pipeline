@@ -1,5 +1,6 @@
 import { MintingPolicy, PolicyId } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { lucid } from '../cardano.ts'
+import { writeCollectionDataToFile } from '../helpers/writeCollectionDataToFile.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 
 export const createMintingPolicy = async () => {
@@ -24,8 +25,12 @@ export const createMintingPolicy = async () => {
 
   const policyId: PolicyId = lucid.utils.mintingPolicyToId(script)
 
-  return {
+  const data = {
     policyScript: script,
     policyId: policyId,
   }
+
+  await writeCollectionDataToFile('metadata', 'policy.json', data)
+
+  console.log('Minting policy created!\n')
 }

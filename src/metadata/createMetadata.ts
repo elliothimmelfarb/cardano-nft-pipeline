@@ -1,7 +1,7 @@
 import { PolicyId, utf8ToHex } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { config } from '../config.ts'
-import { getCollectionFileName } from '../helpers/getCollectionFileName.ts'
 import { readAssetsFile } from '../helpers/readAssetsFile.ts'
+import { writeCollectionDataToFile } from '../helpers/writeCollectionDataToFile.ts'
 
 export const createMetadata = async (policyId: PolicyId) => {
   const { assets: inputAssets } = await readAssetsFile()
@@ -51,10 +51,7 @@ export const createMetadata = async (policyId: PolicyId) => {
     ),
   )
 
-  Deno.writeFileSync(
-    `${Deno.cwd()}/outputs/metadata/${getCollectionFileName()}_metadata.json`,
-    data,
-  )
+  await writeCollectionDataToFile('metadata', 'assets.json', data)
 
   return {
     assets,
