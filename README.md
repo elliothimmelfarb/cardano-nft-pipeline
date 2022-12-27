@@ -39,8 +39,7 @@ Look `src/tasks` directory to see task files.
 4. Verify all assets have been pinned successfully to IPFS by running `deno task verify-pinned`
 5. Create policy ID and script with `deno task create-policy`
 6. Create metadata with `deno task create-metadata`
-7. Mint the royalties NFT with `deno task mint-royalties`
-8. Burn the royalties NFT with `deno task burn-royalties`
+7. Mint and then burn the royalties NFT with `deno task mint-royalties`
 
 ## Test Cardano NFT metadata
 
