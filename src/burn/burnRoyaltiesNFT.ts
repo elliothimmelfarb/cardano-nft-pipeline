@@ -1,13 +1,11 @@
-import { TxHash } from 'https://deno.land/x/lucid@0.7.6/mod.ts'
 import { lucid } from '../cardano.ts'
-import { createMintingPolicy } from '../mint/createMintingPolicy.ts'
+import { readPolicyFile } from '../helpers/readPolicyFile.ts'
+import { waitForTransaction } from '../helpers/waitForTransaction.ts'
 
-export async function burnRoyaltiesNFT(
-  policy: Awaited<ReturnType<typeof createMintingPolicy>>,
-): Promise<TxHash> {
+export async function burnRoyaltiesNFT() {
   console.log('Burning royalties NFT...')
 
-  const { policyId, policyScript } = policy
+  const { policyId, policyScript } = await readPolicyFile()
 
   const tx = await lucid
     .newTx()
@@ -20,5 +18,5 @@ export async function burnRoyaltiesNFT(
 
   const txHash = await signedTx.submit()
 
-  return txHash
+  await waitForTransaction('royalties burn', txHash)
 }
