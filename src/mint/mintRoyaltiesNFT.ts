@@ -15,6 +15,8 @@ export const mintRoyaltiesNFT = async ({
   policyId: PolicyId
   policyScript: Script
 }) => {
+  console.log('Minting royalties NFT...')
+
   const walletAddress = await getWallet().rewardAddress()
 
   const tx = await lucid

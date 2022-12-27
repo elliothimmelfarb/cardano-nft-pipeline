@@ -3,6 +3,8 @@ import { lucid } from '../cardano.ts'
 import { getWallet } from '../wallet/getWallet.ts'
 
 export const createMintingPolicy = async () => {
+  console.log('Creating minting policy...')
+
   const wallet = getWallet()
 
   const { paymentCredential } = lucid.utils.getAddressDetails(

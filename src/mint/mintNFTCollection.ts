@@ -11,6 +11,12 @@ export const mintNFTCollection = async () => {
 
   await mintRoyaltiesNFT({ policyId, policyScript })
 
+  console.log('Giving some time before beginning minting...')
+
+  await new Promise((resolve) => setTimeout(resolve, 15000))
+
+  console.log('Minting NFTs...')
+
   const tx = await lucid
     .newTx()
     .mintAssets(assets)

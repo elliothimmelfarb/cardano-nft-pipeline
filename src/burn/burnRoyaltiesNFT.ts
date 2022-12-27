@@ -5,6 +5,8 @@ import { createMintingPolicy } from '../mint/createMintingPolicy.ts'
 export async function burnRoyaltiesNFT(
   policy: Awaited<ReturnType<typeof createMintingPolicy>>,
 ): Promise<TxHash> {
+  console.log('Burning royalties NFT...')
+
   const { policyId, policyScript } = policy
 
   const tx = await lucid

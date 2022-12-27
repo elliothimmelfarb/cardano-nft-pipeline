@@ -1,4 +1,6 @@
 export const processInvokeAI = (metadata: any, ipfsHash: string) => {
+  console.log('Processing InvokeAI metadata...')
+
   const promptParts = metadata.image.prompt[0].prompt
     .split(',')
     .reduce((out: { [key: string]: string }, part: string, index: number) => {
