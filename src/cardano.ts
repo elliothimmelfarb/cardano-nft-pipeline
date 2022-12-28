@@ -6,4 +6,12 @@ export const blockFrost = new Blockfrost(
   config.projectId,
 )
 
-export const lucid = await Lucid.new(blockFrost, config.network)
+const lucid = await Lucid.new(blockFrost, config.network)
+
+const seedPhrase = Deno.env.get('SEED_PHRASE')
+
+if (!seedPhrase) throw new Error('no seed phrase found')
+
+lucid.selectWalletFromSeed(seedPhrase)
+
+export { lucid }
