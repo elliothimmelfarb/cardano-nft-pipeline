@@ -12,6 +12,7 @@
     "log-address": "deno run -A src/tasks/logAddress.task.ts",
     "create-policy": "deno run -A src/tasks/createPolicy.task.ts",
     "create-metadata": "deno run -A src/tasks/createMetadata.task.ts",
-    "mint-royalties": "deno run -A src/tasks/mintRoyalties.task.ts"
+    "mint-royalties": "deno run -A src/tasks/mintRoyalties.task.ts",
+    "burn-royalties": "deno run -A src/tasks/burnRoyalties.task.ts"
   }
 }

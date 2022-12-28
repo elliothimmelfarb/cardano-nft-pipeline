@@ -27,9 +27,5 @@ export const mintRoyaltiesNFT = async () => {
 
   const txHash = await signedTx.submit()
 
-  console.log('Royalties txHash:', txHash)
-
   await waitForTransaction('royalties mint', txHash)
-
-  await burnRoyaltiesNFT()
 }
