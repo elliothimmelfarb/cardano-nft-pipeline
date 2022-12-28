@@ -1,25 +1,25 @@
 import { lucid } from '../cardano.ts'
+import { readMetadataFile } from '../helpers/readMetadataFile.ts'
+import { readPolicyFile } from '../helpers/readPolicyFile.ts'
 import { waitForTransaction } from '../helpers/waitForTransaction.ts'
-import { createMetadata } from '../metadata/createMetadata.ts'
-import { createMintingPolicy } from './createMintingPolicy.ts'
-import { mintRoyaltiesNFT } from './mintRoyaltiesNFT.ts'
 
 export const mintNFTCollection = async () => {
-  const { policyId, policyScript } = await createMintingPolicy()
+  const { policyScript } = await readPolicyFile()
 
-  const { assets, metadata } = await createMetadata(policyId)
+  const { assets, metadata } = await readMetadataFile()
 
-  await mintRoyaltiesNFT({ policyId, policyScript })
-
-  console.log('Giving some time before beginning minting...')
-
-  await new Promise((resolve) => setTimeout(resolve, 15000))
+  const mintableAssets = assets.reduce((acc, asset) => {
+    return {
+      ...acc,
+      [asset]: 1n,
+    }
+  }, {})
 
   console.log('Minting NFTs...')
 
   const tx = await lucid
     .newTx()
-    .mintAssets(assets)
+    .mintAssets(mintableAssets)
     .attachMetadata(721, metadata)
     .validTo(Date.now() + 100000)
     .attachMintingPolicy(policyScript)
